@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NavBar.master.cs" Inherits="Project_PSD_LAB.View.NavBar" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<%--    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>--%>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%--<div>--%>
+            <% if (Project_PSD_LAB.Controller.UserController.isUserLoggedIn())
+                {
+                    if (Project_PSD_LAB.Controller.UserController.isUserAdmin())
+                    {
+            %>
+                    <asp:Button ID="HomeBtn" runat="server" Text="Home" OnClick="HomeBtn_Click" />
+                    <asp:Button ID="ManageMakeupBtn" runat="server" Text="Manage Makeup" OnClick="ManageMakeupBtn_Click" />
+                    <asp:Button ID="OrderQueueBtn" runat="server" Text="Order Queue" OnClick="OrderQueueBtn_Click" />
+                    <asp:Button ID="TransactionReportBtn" runat="server" Text="Transaction Report" OnClick="TransactionReportBtn_Click" />
+            <%
+                   }
+                   else if (!Project_PSD_LAB.Controller.UserController.isUserAdmin())
+                   {
+            %>
+                    <asp:Button ID="OrderMakeupBtn" runat="server" Text="Order Makeup" OnClick="OrderMakeupBtn_Click" />
+            <%
+                   }
+            %>
+                <asp:Button ID="HistoryBtn" runat="server" Text="History" OnClick="HistoryBtn_Click" />
+                <asp:Button ID="ProfileBtn" runat="server" Text="Profile" OnClick="ProfileBtn_Click" />
+                <asp:Button ID="LogoutBtn" runat="server" Text="Logout" OnClick="LogoutBtn_Click" />
+            <%
+                }
+                else
+                {
+                    Response.Redirect("~/View/LoginPage.aspx");
+                }
+            %>
+
+        <%--</div>--%>
+        <div>
+            <asp:ContentPlaceHolder ID="head" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+</body>
+</html>

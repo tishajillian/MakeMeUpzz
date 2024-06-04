@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities1">
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="Database1Model.Cart">
+        <MappingFragment StoreEntitySet="Carts">
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="MakeupID" ColumnName="MakeupID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MakeupBrands">
+      <EntityTypeMapping TypeName="Database1Model.MakeupBrand">
+        <MappingFragment StoreEntitySet="MakeupBrands">
+          <ScalarProperty Name="MakeupBrandID" ColumnName="MakeupBrandID" />
+          <ScalarProperty Name="MakeupBrandName" ColumnName="MakeupBrandName" />
+          <ScalarProperty Name="MakeupBrandRating" ColumnName="MakeupBrandRating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Makeups">
+      <EntityTypeMapping TypeName="Database1Model.Makeup">
+        <MappingFragment StoreEntitySet="Makeups">
+          <ScalarProperty Name="MakeupID" ColumnName="MakeupID" />
+          <ScalarProperty Name="MakeupName" ColumnName="MakeupName" />
+          <ScalarProperty Name="MakeupPrice" ColumnName="MakeupPrice" />
+          <ScalarProperty Name="MakeupWeight" ColumnName="MakeupWeight" />
+          <ScalarProperty Name="MakeupTypeID" ColumnName="MakeupTypeID" />
+          <ScalarProperty Name="MakeupBrandID" ColumnName="MakeupBrandID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MakeupTypes">
+      <EntityTypeMapping TypeName="Database1Model.MakeupType">
+        <MappingFragment StoreEntitySet="MakeupTypes">
+          <ScalarProperty Name="MakeupTypeID" ColumnName="MakeupTypeID" />
+          <ScalarProperty Name="MakeupTypeName" ColumnName="MakeupTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionHeaders">
+      <EntityTypeMapping TypeName="Database1Model.TransactionHeader">
+        <MappingFragment StoreEntitySet="TransactionHeaders">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Database1Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="UserDOB" ColumnName="UserDOB" />
+          <ScalarProperty Name="UserGender" ColumnName="UserGender" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDetails">
+      <EntityTypeMapping TypeName="Database1Model.TransactionDetail">
+        <MappingFragment StoreEntitySet="TransactionDetails">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="MakeupID" ColumnName="MakeupID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

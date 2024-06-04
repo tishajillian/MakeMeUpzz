@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Carts">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="MakeupID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MakeupBrands">
+    <Key>
+      <PropertyRef Name="MakeupBrandID" />
+    </Key>
+    <Property Name="MakeupBrandID" Type="int" Nullable="false" />
+    <Property Name="MakeupBrandName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MakeupBrandRating" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Makeups">
+    <Key>
+      <PropertyRef Name="MakeupID" />
+    </Key>
+    <Property Name="MakeupID" Type="int" Nullable="false" />
+    <Property Name="MakeupName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MakeupPrice" Type="int" Nullable="false" />
+    <Property Name="MakeupWeight" Type="int" Nullable="false" />
+    <Property Name="MakeupTypeID" Type="int" Nullable="false" />
+    <Property Name="MakeupBrandID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MakeupTypes">
+    <Key>
+      <PropertyRef Name="MakeupTypeID" />
+    </Key>
+    <Property Name="MakeupTypeID" Type="int" Nullable="false" />
+    <Property Name="MakeupTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionDetails">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="MakeupID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="MakeupID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionHeaders">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="TransactionDate" Type="date" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserEmail" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="UserDOB" Type="date" Nullable="false" />
+    <Property Name="UserGender" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="UserRole" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="UserPassword" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Carts_Makeups">
+    <End Role="Makeups" Type="Self.Makeups" Multiplicity="1" />
+    <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Makeups">
+        <PropertyRef Name="MakeupID" />
+      </Principal>
+      <Dependent Role="Carts">
+        <PropertyRef Name="MakeupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carts_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Carts">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Makeups_MakeupBrands">
+    <End Role="MakeupBrands" Type="Self.MakeupBrands" Multiplicity="1" />
+    <End Role="Makeups" Type="Self.Makeups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MakeupBrands">
+        <PropertyRef Name="MakeupBrandID" />
+      </Principal>
+      <Dependent Role="Makeups">
+        <PropertyRef Name="MakeupBrandID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Makeups_MakeupTypes">
+    <End Role="MakeupTypes" Type="Self.MakeupTypes" Multiplicity="1" />
+    <End Role="Makeups" Type="Self.Makeups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MakeupTypes">
+        <PropertyRef Name="MakeupTypeID" />
+      </Principal>
+      <Dependent Role="Makeups">
+        <PropertyRef Name="MakeupTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetails_Makeups">
+    <End Role="Makeups" Type="Self.Makeups" Multiplicity="1" />
+    <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Makeups">
+        <PropertyRef Name="MakeupID" />
+      </Principal>
+      <Dependent Role="TransactionDetails">
+        <PropertyRef Name="MakeupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetails_TransactionHeaders">
+    <End Role="TransactionHeaders" Type="Self.TransactionHeaders" Multiplicity="1" />
+    <End Role="TransactionDetails" Type="Self.TransactionDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TransactionHeaders">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="TransactionDetails">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionHeaders_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="TransactionHeaders" Type="Self.TransactionHeaders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="TransactionHeaders">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="Carts" EntityType="Self.Carts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MakeupBrands" EntityType="Self.MakeupBrands" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Makeups" EntityType="Self.Makeups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MakeupTypes" EntityType="Self.MakeupTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionDetails" EntityType="Self.TransactionDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionHeaders" EntityType="Self.TransactionHeaders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Carts_Makeups" Association="Self.FK_Carts_Makeups">
+      <End Role="Makeups" EntitySet="Makeups" />
+      <End Role="Carts" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carts_Users" Association="Self.FK_Carts_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Carts" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Makeups_MakeupBrands" Association="Self.FK_Makeups_MakeupBrands">
+      <End Role="MakeupBrands" EntitySet="MakeupBrands" />
+      <End Role="Makeups" EntitySet="Makeups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Makeups_MakeupTypes" Association="Self.FK_Makeups_MakeupTypes">
+      <End Role="MakeupTypes" EntitySet="MakeupTypes" />
+      <End Role="Makeups" EntitySet="Makeups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetails_Makeups" Association="Self.FK_TransactionDetails_Makeups">
+      <End Role="Makeups" EntitySet="Makeups" />
+      <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetails_TransactionHeaders" Association="Self.FK_TransactionDetails_TransactionHeaders">
+      <End Role="TransactionHeaders" EntitySet="TransactionHeaders" />
+      <End Role="TransactionDetails" EntitySet="TransactionDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionHeaders_Users" Association="Self.FK_TransactionHeaders_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TransactionHeaders" EntitySet="TransactionHeaders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
