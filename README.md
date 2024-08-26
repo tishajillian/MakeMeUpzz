@@ -1,4 +1,4 @@
-MakeMeUpzz: Web-Based Makeup and Skincare Application 💄
+<h1>MakeMeUpzz: Web-Based Makeup and Skincare Application 💄</h1> 
 
 Key Features
 - User Roles: Supports three user roles—Admin, Customer, and Guest—with tailored functionalities for each.
