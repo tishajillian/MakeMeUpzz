@@ -1,19 +1,22 @@
 <h1>MakeMeUpzz: Web-Based Makeup and Skincare Application 💄</h1> 
 
-Key Features
+
+<b>Key Features</b>
 - User Roles: Supports three user roles—Admin, Customer, and Guest—with tailored functionalities for each.
 - Admin Dashboard: Admins can manage makeup products, handle transactions, and view sales reports.
 - Customer Experience: Customers can browse products, add items to the cart, and view transaction history.
 - Guest Access: Guests can register and log in to access customer features.
 
-Technologies Used
+
+<b>Technologies Used</b>
 - Programming Languages: C#, HTML, CSS, JavaScript
 - Framework: ASP.NET
 - Database: Entity Framework with SQL Server
 - Design Pattern: Domain Driven Design
 - Version Control: Git, GitHub
 
-Project Structure
+
+<b>Project Structure</b>
 - View Layer: Handles user interfaces and user commands.
 - Controller Layer: Validates user input and delegates requests.
 - Handler Layer: Manages business logic and queries the database.
