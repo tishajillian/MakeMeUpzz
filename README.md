@@ -9,7 +9,7 @@
 
 
 <b>Technologies Used</b>
-- Programming Languages: C#, HTML, CSS, JavaScript
+- Programming Languages: C#, HTML
 - Framework: ASP.NET
 - Database: Entity Framework with SQL Server
 - Design Pattern: Domain Driven Design
